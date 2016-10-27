@@ -35,26 +35,31 @@ public class TitleTest {
     public class TitleCantBeBlank {
 
         @Test
+        @DisplayName("null")
         void nullValue() {
             titleMustNotBeBlank(null);
         }
 
         @Test
+        @DisplayName("empty")
         void emptyValue() {
             titleMustNotBeBlank("");
         }
 
         @Test
+        @DisplayName("space")
         void spaceValue() {
             titleMustNotBeBlank(" ");
         }
 
         @Test
+        @DisplayName("tab")
         void tabValue() {
             titleMustNotBeBlank("\t");
         }
 
         @Test
+        @DisplayName("line break")
         void lineBreakValue() {
             titleMustNotBeBlank("\n");
         }
@@ -72,18 +77,21 @@ public class TitleTest {
     public class TitleAreTrimmed {
 
         @Test
+        @DisplayName("spaces")
         void spaces() {
             Title title = Title.of(" trim me ");
             assertThat(title.getValue()).isEqualTo("trim me");
         }
 
         @Test
+        @DisplayName("tabs")
         void tabs() {
             Title title = Title.of("\ttrim me\t");
             assertThat(title.getValue()).isEqualTo("trim me");
         }
 
         @Test
+        @DisplayName("line breaks")
         void lineBreaks() {
             Title title = Title.of("\ntrim me\n");
             assertThat(title.getValue()).isEqualTo("trim me");
@@ -96,6 +104,7 @@ public class TitleTest {
     public class Equality {
 
         @Test
+        @DisplayName("titles with same value are equal")
         void titlesWithSameValuesAreEqual() {
             Title foo1 = Title.of("foo");
             Title foo2 = Title.of("foo");
@@ -103,6 +112,7 @@ public class TitleTest {
         }
 
         @Test
+        @DisplayName("titles with different values are not equal")
         void titlesWithDifferentValuesAreNotEqual() {
             Title foo = Title.of("foo");
             Title bar = Title.of("bar");
